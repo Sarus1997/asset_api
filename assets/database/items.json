@@ -1,0 +1,221 @@
+[
+    {
+        "productId": "P001",
+        "name": "MSI Rider GE i9",
+        "location": "Bangkok",
+        "isChecked": true,
+        "price": 150000,
+        "serial": "1234567890",
+        "orderDate": "2024-06-11T00:00:00.000",
+        "poNo": "PO-12345",
+        "remark": "Good condition"
+    },
+    {
+        "productId": "P002",
+        "name": "Asus ZenBook Pro Duo",
+        "location": "Tokyo",
+        "isChecked": true,
+        "price": 180000,
+        "serial": "0987654321",
+        "orderDate": "2024-06-10T00:00:00.000",
+        "poNo": "PO-54321",
+        "remark": "Excellent condition"
+    },
+    {
+        "productId": "P003",
+        "name": "Dell XPS 15",
+        "location": "New York",
+        "isChecked": true,
+        "price": 160000,
+        "serial": "1357924680",
+        "orderDate": "2024-06-09T00:00:00.000",
+        "poNo": "PO-67890",
+        "remark": "Like new"
+    },
+    {
+        "productId": "P004",
+        "name": "HP Spectre x360",
+        "location": "London",
+        "isChecked": false,
+        "price": 140000,
+        "serial": "2468013579",
+        "orderDate": "2024-06-08T00:00:00.000",
+        "poNo": "PO-98765",
+        "remark": "Very good condition"
+    },
+    {
+        "productId": "P005",
+        "name": "Lenovo ThinkPad X1 Carbon",
+        "location": "Paris",
+        "isChecked": false,
+        "price": 130000,
+        "serial": "9876543210",
+        "orderDate": "2024-06-07T00:00:00.000",
+        "poNo": "PO-23456",
+        "remark": "Minor scratches"
+    },
+    {
+        "productId": "P006",
+        "name": "Microsoft Surface Laptop 4",
+        "location": "Berlin",
+        "isChecked": true,
+        "price": 170000,
+        "serial": "0123456789",
+        "orderDate": "2024-06-06T00:00:00.000",
+        "poNo": "PO-34567",
+        "remark": "Scratch on screen"
+    },
+    {
+        "productId": "P007",
+        "name": "Razer Blade 15",
+        "location": "Sydney",
+        "isChecked": false,
+        "price": 150000,
+        "serial": "5432167890",
+        "orderDate": "2024-06-05T00:00:00.000",
+        "poNo": "PO-76543",
+        "remark": "Dent on corner"
+    },
+    {
+        "productId": "P008",
+        "name": "Acer Predator Helios 300",
+        "location": "Los Angeles",
+        "isChecked": true,
+        "price": 155000,
+        "serial": "6789012345",
+        "orderDate": "2024-06-04T00:00:00.000",
+        "poNo": "PO-45678",
+        "remark": "No issues"
+    },
+    {
+        "productId": "P009",
+        "name": "Apple MacBook Pro 16-inch",
+        "location": "San Francisco",
+        "isChecked": true,
+        "price": 190000,
+        "serial": "7890123456",
+        "orderDate": "2024-06-03T00:00:00.000",
+        "poNo": "PO-56789",
+        "remark": "Battery needs replacement"
+    },
+    {
+        "productId": "P010",
+        "name": "Gigabyte Aero 15 OLED",
+        "location": "Seoul",
+        "isChecked": true,
+        "price": 175000,
+        "serial": "8901234567",
+        "orderDate": "2024-06-02T00:00:00.000",
+        "poNo": "PO-87654",
+        "remark": "Performance issue"
+    },
+    {
+        "productId": "P011",
+        "name": "Huawei MateBook X Pro",
+        "location": "Beijing",
+        "isChecked": true,
+        "price": 165000,
+        "serial": "7654321098",
+        "orderDate": "2024-06-01T00:00:00.000",
+        "poNo": "PO-23451",
+        "remark": "Overheating problem"
+    },
+    {
+        "productId": "P012",
+        "name": "MSI GS66 Stealth",
+        "location": "Hong Kong",
+        "isChecked": true,
+        "price": 158000,
+        "serial": "6543210987",
+        "orderDate": "2024-05-31T00:00:00.000",
+        "poNo": "PO-34512",
+        "remark": "Fan noise"
+    },
+    {
+        "productId": "P013",
+        "name": "Razer Blade Stealth 13",
+        "location": "Singapore",
+        "isChecked": false,
+        "price": 145000,
+        "serial": "5432109876",
+        "orderDate": "2024-05-30T00:00:00.000",
+        "poNo": "PO-45123",
+        "remark": "Graphics card issue"
+    },
+    {
+        "productId": "P014",
+        "name": "Lenovo Legion 5",
+        "location": "Moscow",
+        "isChecked": true,
+        "price": 135000,
+        "serial": "4321098765",
+        "orderDate": "2024-05-29T00:00:00.000",
+        "poNo": "PO-51234",
+        "remark": "Hard drive failure"
+    },
+    {
+        "productId": "P015",
+        "name": "Dell Alienware M15 R5",
+        "location": "Dubai",
+        "isChecked": true,
+        "price": 185000,
+        "serial": "3210987654",
+        "orderDate": "2024-05-28T00:00:00.000",
+        "poNo": "PO-12345",
+        "remark": "RAM issue"
+    },
+    {
+        "productId": "P016",
+        "name": "Acer Aspire 7",
+        "location": "Bangkok",
+        "isChecked": false,
+        "price": 125000,
+        "serial": "2109876543",
+        "orderDate": "2024-05-27T00:00:00.000",
+        "poNo": "PO-23456"
+    },
+    {
+        "productId": "P017",
+        "name": "MSI Prestige 14",
+        "location": "Seoul",
+        "isChecked": false,
+        "price": 170000,
+        "serial": "5678901234",
+        "orderDate": "2024-05-26T00:00:00.000",
+        "poNo": "PO-34567",
+        "remark": "Good condition"
+    },
+    {
+        "productId": "P018",
+        "name": "Asus ROG Zephyrus G14",
+        "location": "Tokyo",
+        "isChecked": true,
+        "price": 160000,
+        "serial": "6789012345",
+        "orderDate": "2024-05-25T00:00:00.000",
+        "poNo": "PO-45678",
+        "remark": "Minor scratches"
+    },
+    {
+        "productId": "P019",
+        "name": "Lenovo IdeaPad Flex 5",
+        "location": "Shanghai",
+        "isChecked": false,
+        "price": 150000,
+        "serial": "7890123456",
+        "orderDate": "2024-05-24T00:00:00.000",
+        "poNo": "PO-56789",
+        "remark": "Like new"
+    },
+    {
+        "productId": "P020",
+        "name": "HP Omen 15",
+        "location": "Sydney",
+        "isChecked": true,
+        "price": 180000,
+        "serial": "8901234567",
+        "orderDate": "2024-05-23T00:00:00.000",
+        "poNo": "PO-67890",
+        "remark": "Very good condition"
+    }    
+]
