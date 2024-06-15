@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: unused_field, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -19,7 +19,7 @@ class SearchBar extends StatefulWidget {
   final VoidCallback onScanQRCode;
   final VoidCallback onResetPage;
   final VoidCallback onShowChecked;
-  final VoidCallback onToggleFilter;
+  final VoidCallback onShowUnchecked;
   final AnimationController animationController;
 
   const SearchBar({
@@ -28,7 +28,7 @@ class SearchBar extends StatefulWidget {
     required this.onScanQRCode,
     required this.onResetPage,
     required this.onShowChecked,
-    required this.onToggleFilter,
+    required this.onShowUnchecked,
     required this.animationController,
     super.key,
   });
@@ -44,69 +44,84 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 235, 229, 229),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: TextField(
-              controller: widget.controller,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                labelText: 'Search',
-                hintText: 'ค้นหา',
-                prefixIcon: IconButton(
-                  icon: const Icon(Icons.qr_code_scanner),
-                  onPressed: widget.onScanQRCode,
-                ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
               ),
-              style: const TextStyle(color: Colors.blue),
-              onChanged: widget.onTextChanged,
+              child: TextField(
+                controller: widget.controller,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  labelText: 'Search',
+                  hintText: 'ค้นหา',
+                  prefixIcon: IconButton(
+                    icon: const Icon(Icons.qr_code_scanner),
+                    onPressed: widget.onScanQRCode,
+                  ),
+                ),
+                style: const TextStyle(color: Colors.black),
+                onChanged: widget.onTextChanged,
+              ),
             ),
           ),
-        ),
-        IconButton(
-          icon: RotationTransition(
-            turns:
-                Tween(begin: 0.0, end: 1.0).animate(widget.animationController),
-            child: const Icon(Icons.refresh, color: Colors.purple),
+          IconButton(
+            icon: RotationTransition(
+              turns: Tween(begin: 0.0, end: 1.0)
+                  .animate(widget.animationController),
+              child: const Icon(Icons.refresh, color: Colors.purple),
+            ),
+            onPressed: () {
+              widget.animationController.forward(from: 0.0);
+              widget.onResetPage();
+            },
           ),
-          onPressed: () {
-            widget.animationController.forward(from: 0.0);
-            widget.onResetPage();
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Row(
-            children: <Widget>[
-              _buildFilterButton('PF', _isPfPressed, () {
-                setState(() {
-                  _isPfPressed = !_isPfPressed;
-                  if (_isPfPressed) {
-                    _isNfPressed = false;
-                  }
-                });
-                widget.onShowChecked();
-              }),
-              const SizedBox(width: 8),
-              _buildFilterButton('NF', _isNfPressed, () {
-                setState(() {
-                  _isNfPressed = !_isNfPressed;
-                  if (_isNfPressed) {
-                    _isPfPressed = false;
-                  }
-                });
-                widget.onToggleFilter();
-              }),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              children: <Widget>[
+                _buildFilterButton('PF', _isPfPressed, () {
+                  setState(() {
+                    _isPfPressed = !_isPfPressed;
+                    if (_isPfPressed) {
+                      _isNfPressed = false;
+                      widget.onShowChecked();
+                    } else {
+                      widget.onResetPage();
+                    }
+                  });
+                }),
+                const SizedBox(width: 8.0),
+                _buildFilterButton('NF', _isNfPressed, () {
+                  setState(() {
+                    _isNfPressed = !_isNfPressed;
+                    if (_isNfPressed) {
+                      _isPfPressed = false;
+                      widget.onShowUnchecked();
+                    } else {
+                      widget.onResetPage();
+                    }
+                  });
+                }),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -117,17 +132,31 @@ class _SearchBarState extends State<SearchBar> {
         onTap: onTap,
         child: AnimatedContainer(
           duration: animationDuration,
-          width: isSelected ? 40 : 30,
-          height: isSelected ? 40 : 30,
+          width: isSelected ? 40 : 35,
+          height: isSelected ? 40 : 35,
           decoration: BoxDecoration(
-            color: isSelected ? Colors.green : Colors.grey[100],
+            color: isSelected ? Colors.green : Colors.grey[300],
             shape: BoxShape.circle,
             border: Border.all(color: Colors.black),
+            boxShadow: isSelected
+                ? [
+                    BoxShadow(
+                      color: Colors.green.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ]
+                : [],
           ),
           child: Center(
             child: Text(
               label,
-              style: TextStyle(fontSize: isSelected ? 15 : 13),
+              style: TextStyle(
+                fontSize: isSelected ? 15 : 13,
+                color: isSelected ? Colors.white : Colors.black,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              ),
             ),
           ),
         ),
@@ -142,6 +171,7 @@ class _SearchPageState extends State<SearchPage>
   late AnimationController _animationController;
   bool _isFiltered = false;
   bool _showCheckedOnly = false;
+  bool _showUncheckedOnly = false;
   String _searchText = '';
 
   List<Map<String, dynamic>> items = [];
@@ -183,10 +213,12 @@ class _SearchPageState extends State<SearchPage>
   List<Map<String, dynamic>> get filteredItems {
     List<Map<String, dynamic>> filteredList = items;
 
-    if (_isFiltered) {
-      filteredList = filteredList
-          .where((item) => item['isChecked'] == _showCheckedOnly)
-          .toList();
+    if (_showCheckedOnly) {
+      filteredList =
+          filteredList.where((item) => item['isChecked'] == true).toList();
+    } else if (_showUncheckedOnly) {
+      filteredList =
+          filteredList.where((item) => item['isChecked'] == false).toList();
     }
 
     if (_searchText.isNotEmpty) {
@@ -225,23 +257,22 @@ class _SearchPageState extends State<SearchPage>
     setState(() {
       _isFiltered = false;
       _showCheckedOnly = false;
+      _showUncheckedOnly = false;
       _searchText = '';
-    });
-  }
-
-  void _toggleFilter() {
-    setState(() {
-      _isFiltered = !_isFiltered;
-      if (!_isFiltered) {
-        _showCheckedOnly = false;
-      }
     });
   }
 
   void _showChecked() {
     setState(() {
-      _isFiltered = true;
       _showCheckedOnly = true;
+      _showUncheckedOnly = false;
+    });
+  }
+
+  void _showUnchecked() {
+    setState(() {
+      _showUncheckedOnly = true;
+      _showCheckedOnly = false;
     });
   }
 
@@ -273,19 +304,33 @@ class _SearchPageState extends State<SearchPage>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'Balance: $formattedAmount',
-            style: const TextStyle(
-              fontSize: 13,
-              color: Color.fromARGB(255, 245, 255, 198),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 34, 34, 59),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Text(
+              'Balance : $formattedAmount',
+              style: const TextStyle(
+                fontSize: 13,
+                color: Color.fromARGB(255, 245, 255, 198),
+              ),
             ),
           ),
           const SizedBox(width: 10),
-          Text(
-            'PF: $checkedItemsCount / $totalItemsCount',
-            style: const TextStyle(
-              fontSize: 13,
-              color: Color.fromARGB(255, 245, 255, 198),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 34, 34, 59),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Text(
+              'PF : $checkedItemsCount / $totalItemsCount',
+              style: const TextStyle(
+                fontSize: 13,
+                color: Color.fromARGB(255, 245, 255, 198),
+              ),
             ),
           ),
         ],
@@ -319,7 +364,7 @@ class _SearchPageState extends State<SearchPage>
               onScanQRCode: _scanQRCode,
               onResetPage: _resetPage,
               onShowChecked: _showChecked,
-              onToggleFilter: _toggleFilter,
+              onShowUnchecked: _showUnchecked,
               animationController: _animationController,
             ),
             const SizedBox(height: 16),
